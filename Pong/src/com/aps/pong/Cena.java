@@ -23,6 +23,9 @@ public class Cena implements GLEventListener, KeyListener {
 	private float VELOCIDADE = 0.01f;
 
 	private float limite_inferior = -1;
+	private float limite_superior = 1;
+	private float limite_direita = 1;
+	private float limite_esquerda = -1;
 
 	private float BASTAO_X1 = -0.2f;
 	private float BASTAO_X2 = 0.2f;
@@ -43,6 +46,11 @@ public class Cena implements GLEventListener, KeyListener {
 	private float MOVE_BASTAO_X = 0;
 
 	private float BASTAO_CENTRO = (BASTAO_PONTA_ESQUERDA + BASTAO_PONTA_DIREITA) / 2;
+
+	private boolean tem_que_subir = false;
+	private boolean vai_pro_topo = false;
+	private boolean tem_que_descer = false;
+	private boolean vai_pra_baixo = false;
 
 	@Override
 	public void init(GLAutoDrawable drawable) {
@@ -78,11 +86,27 @@ public class Cena implements GLEventListener, KeyListener {
 
 		POSICAO_BOLA_Y = -(cY + rY) + MOVE_Y;
 		POSICAO_BOLA_X = -(cX + rX) + MOVE_X;
+		System.out.println("BOLA X: " + POSICAO_BOLA_X + " BOLA Y: " + POSICAO_BOLA_Y);
 
 		if (POSICAO_BOLA_Y <= BASTAO_Y1) {
-			gl.glTranslatef(MOVE_X += VELOCIDADE, MOVE_Y += VELOCIDADE, 0);
+			tem_que_subir = true;
 		}
-//		gl.glTranslatef(0, MOVE_Y -= VELOCIDADE, 0);
+
+		if (tem_que_subir) {
+			direitaCima(gl);
+		}
+
+		if (vai_pro_topo) {
+			esquerdaCima(gl);
+		}
+
+		if (tem_que_descer) {
+			esquerdaBaixo(gl);
+		}
+
+		if (vai_pra_baixo) {
+			direitaBaixo(gl);
+		}
 
 		gl.glBegin(GL2.GL_POLYGON);
 		for (float i = 0; i < lim; i += 0.01) {
@@ -107,28 +131,43 @@ public class Cena implements GLEventListener, KeyListener {
 	}
 
 	private void direitaCima(GL2 gl) {
-		System.out.println(POS_ATUAL_X);
-		System.out.println(BASTAO_CENTRO);
-//		if (POSICAO_BOLA_X >= BASTAO_CENTRO) {
+		System.out.println("direitaCima");
 		gl.glTranslatef(MOVE_X += VELOCIDADE, MOVE_Y += VELOCIDADE, 0);
-//		}
+		if (POSICAO_BOLA_X > limite_direita) {
+			tem_que_subir = false;
+			vai_pro_topo = true;
+
+		}
+
 	}
 
 	private void esquerdaCima(GL2 gl) {
-		if (POSICAO_BOLA_X > BASTAO_CENTRO) {
-			gl.glTranslatef(MOVE_X -= VELOCIDADE, MOVE_Y += VELOCIDADE, 0);
+		System.out.println("esquerdaCima");
+		gl.glTranslatef(MOVE_X -= VELOCIDADE, MOVE_Y += VELOCIDADE, 0);
+		if (POSICAO_BOLA_Y > limite_superior) {
+			vai_pro_topo = false;
+			tem_que_descer = true;
+
+		}
+
+	}
+
+	private void esquerdaBaixo(GL2 gl) {
+		System.out.println("esquerdaBaixo");
+		gl.glTranslatef(MOVE_X -= VELOCIDADE, MOVE_Y -= VELOCIDADE, 0);
+		if (POSICAO_BOLA_X < limite_esquerda) {
+			tem_que_descer = false;
+			vai_pra_baixo = true;
+
 		}
 	}
 
 	private void direitaBaixo(GL2 gl) {
-		if (POSICAO_BOLA_X > BASTAO_CENTRO) {
-			gl.glTranslatef(MOVE_X += VELOCIDADE, MOVE_Y -= VELOCIDADE, 0);
-		}
-	}
+		System.out.println("direitaBaixo");
+		gl.glTranslatef(MOVE_X += VELOCIDADE, MOVE_Y -= VELOCIDADE, 0);
+		if (POSICAO_BOLA_Y <= BASTAO_Y1) {
+			vai_pra_baixo = false;
 
-	private void esquerdaBaixo(GL2 gl) {
-		if (POSICAO_BOLA_X > BASTAO_CENTRO) {
-			gl.glTranslatef(MOVE_X -= VELOCIDADE, MOVE_Y -= VELOCIDADE, 0);
 		}
 	}
 
