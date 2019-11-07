@@ -42,7 +42,7 @@ public class Menu {
     }
 
     public void gameOver() {
-        this.desenhaTexto(180, 300, Color.PINK, "GAME OVER!", 40);
+        this.desenhaTexto(175, 300, Color.PINK, "GAME OVER", 40);
         this.voltar();
     }
 }

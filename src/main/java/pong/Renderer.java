@@ -26,8 +26,8 @@ public class Renderer {
         GLProfile profile = GLProfile.get(GLProfile.GL2);
         GLCapabilities caps = new GLCapabilities(profile);
         window = GLWindow.create(caps);
-//        window.setFullscreen(true);
-        window.setSize(screenWidth, screenHeight);
+        window.setFullscreen(true);
+//        window.setSize(screenWidth, screenHeight);
 //		 window.setResizable(false);
 
         Cena cena = new Cena();
