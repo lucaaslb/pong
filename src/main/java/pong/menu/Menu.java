@@ -9,7 +9,7 @@ public class Menu {
     private TextRenderer textRenderer;
 
     private void voltar() {
-        this.desenhaTexto(515, 10, Color.BLUE, "<- Voltar (v)", 15);
+        this.desenhaTexto(500, 10, Color.BLUE, "<- Voltar (v)", 15);
     }
 
     private void desenhaTexto(int xPosicao, int yPosicao, Color cor, String frase, int size) {
