@@ -6,6 +6,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import pong.menu.Menu;
+import com.jogamp.opengl.util.gl2.GLUT; //primitivas 3D
 
 public class Cena implements GLEventListener, KeyListener {
     private Menu menu;
@@ -52,16 +53,40 @@ public class Cena implements GLEventListener, KeyListener {
     private boolean SUBIR_ESQUERDA = false;
     private boolean DESCER_DIREITA = false;
     private boolean DESCER_ESQUERDA = false;
+    
+    
+    //VIDAS
+    private int VIDAS = 3;
+    
+    private float POSICAO_VIDA_ESQ_X = 0.7f;
+    private float POSICAO_VIDA_ESQ_Y = 0.9f;
+    
+    private float POSICAO_VIDA_Z = -1;
+    
+    private float POSICAO_VIDA_DIR_X = 0.725f;
+    private float POSICAO_VIDA_DIR_Y = 0.9f;
+    
+    private float POSICAO_VIDA_BASE_X = (POSICAO_VIDA_ESQ_X + POSICAO_VIDA_DIR_X) / 2;
+    private float POSICAO_VIDA_BASE_Y = 0.3f;
+    private float POSICAO_VIDA_BASE_Z = -0.89f;
+    
 
     public void init(GLAutoDrawable drawable) {
+    	GL2 gl = drawable.getGL().getGL2();
+        gl.glEnable(GL2.GL_DEPTH_TEST);
     }
 
     public void display(GLAutoDrawable drawable) {
         // obtem o contexto Opengl
-        GL2 gl = drawable.getGL().getGL2();
+    	GL2 gl = drawable.getGL().getGL2();
         // define a cor da janela (R, G, G, alpha)
         gl.glClearColor(0, 0, 0, 1);
 
+        gl.glOrtho(-1, 1, -1, 1, -1, 1);
+        GLUT glut = new GLUT();
+        
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        
         // limpa a janela com a cor especificada
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
         gl.glLoadIdentity(); // lê a matriz identidade
@@ -173,6 +198,8 @@ public class Cena implements GLEventListener, KeyListener {
                 gl.glEnd();
                 gl.glPopMatrix();
 
+                
+                //BASTAO
                 gl.glPushMatrix();
                 colorController.getColor(Color.MAGENTA, gl);
                 gl.glTranslatef(MOVE_BASTAO_X, 0, 0);
@@ -182,9 +209,14 @@ public class Cena implements GLEventListener, KeyListener {
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y2);
                 gl.glVertex2d(BASTAO_X1, BASTAO_Y2);
                 gl.glEnd();
-
                 gl.glPopMatrix();
-
+				
+                float incr = 0;
+				for (int i = 0; i < VIDAS; i += 1) {
+					desenhaVida(gl, glut, incr);
+					incr += 0.1f;
+                }
+              
                 this.menu = new Menu();
                 this.menu.jogo();
                 break;
@@ -201,6 +233,30 @@ public class Cena implements GLEventListener, KeyListener {
         gl.glFlush();
     }
 
+    public void desenhaVida(GL2 gl, GLUT glut, float incr) {
+    	gl.glPopMatrix();                
+        
+        gl.glPushMatrix();
+        gl.glColor3f(1, 0, 0);
+        gl.glTranslatef(POSICAO_VIDA_ESQ_X + incr, POSICAO_VIDA_ESQ_Y, POSICAO_VIDA_Z);
+        glut.glutSolidSphere(0.02f, 10, 10);
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glTranslatef(POSICAO_VIDA_DIR_X + incr, POSICAO_VIDA_DIR_Y, POSICAO_VIDA_Z);
+        glut.glutSolidSphere(0.02f, 10, 10);
+        gl.glPopMatrix();
+
+        gl.glPushMatrix();
+        gl.glRotated(90, 1, 0, 0);
+        gl.glTranslatef(POSICAO_VIDA_BASE_X + incr, POSICAO_VIDA_BASE_Y, POSICAO_VIDA_BASE_Z);
+        glut.glutSolidCone(.03f, 0.05f, 10, 10);
+        gl.glPopMatrix();
+        
+        gl.glPopMatrix();                
+
+    }
+    
     private void subirDireita(GL2 gl) {
         System.out.println("SUBINDO PARA A DIREITA");
         gl.glTranslatef(MOVE_X += VELOCIDADE, MOVE_Y += VELOCIDADE, 0);
@@ -344,19 +400,31 @@ public class Cena implements GLEventListener, KeyListener {
     private void gameOver() {
         float BOLA_X = 0;
         BOLA_X = (POSICAO_BOLA_X + rX);
-
+        
         if (POSICAO_BOLA_Y <= BASTAO_Y1
                 && BOLA_X < BASTAO_PONTA_ESQUERDA) {
-            System.out.println("GAME OVER ESQUERDA :" + BOLA_X + " VS " + BASTAO_PONTA_ESQUERDA);
-            opcao = 4;
-            this.reset();
+        	
+        	VIDAS -= 1;
+        	this.reset();
+        	
+        	if(VIDAS == 0) {
+        		System.out.println("GAME OVER ESQUERDA :" + BOLA_X + " VS " + BASTAO_PONTA_ESQUERDA);
+                this.reset();
+                opcao = 4;
+            }
         }
 
         if (POSICAO_BOLA_Y <= BASTAO_Y1
                 && POSICAO_BOLA_X > BASTAO_PONTA_DIREITA) {
-            System.out.println("GAME OVER DIREITA :" + BASTAO_PONTA_DIREITA);
-            this.reset();
-            opcao = 4;
+            
+        	VIDAS -= 1;
+        	this.reset();
+        	
+            if(VIDAS == 0) {
+            	System.out.println("GAME OVER DIREITA :" + BASTAO_PONTA_DIREITA);
+            	this.reset();
+            	opcao = 4;
+            }
         }
     }
 
