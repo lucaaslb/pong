@@ -61,7 +61,7 @@ public class Cena implements GLEventListener, KeyListener {
     private float POSICAO_VIDA_ESQ_X = 0.7f;
     private float POSICAO_VIDA_ESQ_Y = 0.9f;
     
-    private float POSICAO_VIDA_Z = -1;
+    private float POSICAO_VIDA_Z = 0.3f;
     
     private float POSICAO_VIDA_DIR_X = 0.725f;
     private float POSICAO_VIDA_DIR_Y = 0.9f;
@@ -74,6 +74,14 @@ public class Cena implements GLEventListener, KeyListener {
     public void init(GLAutoDrawable drawable) {
     	GL2 gl = drawable.getGL().getGL2();
         gl.glEnable(GL2.GL_DEPTH_TEST);
+        
+        //Liga iluminacao
+        gl.glEnable(GL2.GL_LIGHT0);
+        gl.glEnable(GL2.GL_LIGHTING);
+        
+        //Habilita as cores do objeto 3D
+        gl.glEnable(GL2.GL_COLOR_MATERIAL);
+        gl.glColorMaterial(GL2.GL_FRONT_AND_BACK, GL2.GL_AMBIENT_AND_DIFFUSE);
     }
 
     public void display(GLAutoDrawable drawable) {
@@ -82,13 +90,12 @@ public class Cena implements GLEventListener, KeyListener {
         // define a cor da janela (R, G, G, alpha)
         gl.glClearColor(0, 0, 0, 1);
 
-        gl.glOrtho(-1, 1, -1, 1, -1, 1);
+        gl.glOrtho(-100, 100, -100, 100, -100, 100);
         GLUT glut = new GLUT();
         
+        // limpa a janela com a cor especificada
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         
-        // limpa a janela com a cor especificada
-        gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
         gl.glLoadIdentity(); // lê a matriz identidade
 
         switch (opcao) {
@@ -211,6 +218,7 @@ public class Cena implements GLEventListener, KeyListener {
                 gl.glEnd();
                 gl.glPopMatrix();
 				
+//                gl.glRotatef(45, 0, 1, 0);
                 float incr = 0;
 				for (int i = 0; i < VIDAS; i += 1) {
 					desenhaVida(gl, glut, incr);
@@ -239,12 +247,12 @@ public class Cena implements GLEventListener, KeyListener {
         gl.glPushMatrix();
         gl.glColor3f(1, 0, 0);
         gl.glTranslatef(POSICAO_VIDA_ESQ_X + incr, POSICAO_VIDA_ESQ_Y, POSICAO_VIDA_Z);
-        glut.glutSolidSphere(0.02f, 10, 10);
+        glut.glutSolidSphere(0.022f, 10, 10);
         gl.glPopMatrix();
 
         gl.glPushMatrix();
         gl.glTranslatef(POSICAO_VIDA_DIR_X + incr, POSICAO_VIDA_DIR_Y, POSICAO_VIDA_Z);
-        glut.glutSolidSphere(0.02f, 10, 10);
+        glut.glutSolidSphere(0.022f, 10, 10);
         gl.glPopMatrix();
 
         gl.glPushMatrix();
@@ -409,6 +417,7 @@ public class Cena implements GLEventListener, KeyListener {
         	
         	if(VIDAS == 0) {
         		System.out.println("GAME OVER ESQUERDA :" + BOLA_X + " VS " + BASTAO_PONTA_ESQUERDA);
+        		VIDAS = 3;
                 this.reset();
                 opcao = 4;
             }
@@ -422,6 +431,7 @@ public class Cena implements GLEventListener, KeyListener {
         	
             if(VIDAS == 0) {
             	System.out.println("GAME OVER DIREITA :" + BASTAO_PONTA_DIREITA);
+            	VIDAS = 3;
             	this.reset();
             	opcao = 4;
             }
