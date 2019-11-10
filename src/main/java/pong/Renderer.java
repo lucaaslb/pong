@@ -34,7 +34,6 @@ public class Renderer {
         window.addGLEventListener(cena); // adiciona a Cena a Janela
         window.addKeyListener(cena); // registra o teclado na janela
 
-        // window.requestFocus();
         final FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start(); // inicia o loop de animação
 
@@ -46,7 +45,6 @@ public class Renderer {
                 System.exit(0);
             }
         });
-        // window.setFullscreen(true);
         window.setVisible(true);
     }
 

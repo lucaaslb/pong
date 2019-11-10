@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="428c4170-3ee8-4eb3-9e7c-88a16ceb7b79" name="Default Changelist" comment="">
+    <list default="true" id="428c4170-3ee8-4eb3-9e7c-88a16ceb7b79" name="Default Changelist" comment="Fase 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pong/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pong/cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/cena/Cena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pong/cena/Color.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pong/cena/ColorController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pong/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pong/Renderer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/Renderer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pong/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/Renderer.class" afterDir="false" />
@@ -52,7 +51,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/cena3d/cena3d" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -114,8 +113,16 @@
       <workItem from="1573166183530" duration="1956000" />
       <workItem from="1573333283975" duration="52000" />
       <workItem from="1573333458837" duration="15149000" />
-      <workItem from="1573405143999" duration="9244000" />
+      <workItem from="1573405143999" duration="14665000" />
     </task>
+    <task id="LOCAL-00001" summary="Fase 2">
+      <created>1573414492481</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573414492481</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,5 +140,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fase 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fase 2" />
   </component>
 </project>

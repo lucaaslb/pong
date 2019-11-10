@@ -6,7 +6,6 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.util.gl2.GLUT;
-import com.sun.javafx.robot.impl.FXRobotHelper;
 import pong.menu.Menu;
 
 public class Cena implements GLEventListener, KeyListener {
@@ -17,16 +16,17 @@ public class Cena implements GLEventListener, KeyListener {
     private boolean PAUSE = false;
 
     private int PONTUACAO_ATUAL = 0;
-    private int PONTUACAO_FASE_2 = 20;
-    private int PONTOS_POR_BATIDA = 20;
+    public static int PONTUACAO_FASE_2 = 200;
+    public static int PONTOS_POR_BATIDA = 50;
+    public static int PONTOS_PARA_VENCER = 400;
     private boolean FASE_2 = true;
 
     private float MOVE_Y = 0;
     private float MOVE_X = 0;
     private float VELOCIDADE = 0.01f;
 
-    private float LIMITE_SUPERIOR = 0.90f;
-    private float LIMITE_DIREITA = 0.90f;
+    private float LIMITE_SUPERIOR = 0.85f;
+    private float LIMITE_DIREITA = 0.87f;
     private float LIMITE_ESQUERDA = -1;
 
     private float BASTAO_X1 = -0.2f;
@@ -67,7 +67,7 @@ public class Cena implements GLEventListener, KeyListener {
     private boolean DESCER_DIREITA = false;
     private boolean DESCER_ESQUERDA = false;
 
-    private int VIDAS = 5;
+    public static int VIDAS = 5;
 
     private float POSICAO_VIDA_ESQ_X = 0.5f;
     private float POSICAO_VIDA_ESQ_Y = 0.9f;
@@ -116,7 +116,7 @@ public class Cena implements GLEventListener, KeyListener {
                 break;
             case 1:
                 this.menu = new Menu();
-                this.menu.regras();
+                this.menu.instrucoes();
                 break;
             case 2:
                 this.menu = new Menu();
@@ -128,7 +128,6 @@ public class Cena implements GLEventListener, KeyListener {
                     this.gameOver();
                     this.inicio(gl);
                 }
-
                 this.gameOver();
 
                 if (PONTUACAO_ATUAL >= PONTUACAO_FASE_2) {
@@ -224,10 +223,11 @@ public class Cena implements GLEventListener, KeyListener {
                         }
                     }
 
-                    if (PONTUACAO_ATUAL == 100) {
+                    if (PONTUACAO_ATUAL == PONTOS_PARA_VENCER) {
                         opcao = 6;
                         this.reset(true);
                         PONTUACAO_ATUAL = 0;
+                        VIDAS = 5;
                         FASE_2 = true;
                     }
                 }
@@ -537,7 +537,6 @@ public class Cena implements GLEventListener, KeyListener {
         SUBIR_ESQUERDA = false;
         DESCER_DIREITA = false;
         DESCER_ESQUERDA = false;
-
     }
 
     private void gameOver() {
@@ -611,7 +610,7 @@ public class Cena implements GLEventListener, KeyListener {
                     BASTAO_PONTA_DIREITA = BASTAO_X2 + (MOVE_BASTAO_X);
                 }
                 break;
-            case KeyEvent.VK_R:
+            case KeyEvent.VK_TAB:
                 opcao = 1;
                 break;
             case KeyEvent.VK_ENTER:
