@@ -7,9 +7,13 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.util.gl2.GLUT;
 import pong.menu.Menu;
+import pong.textura.Textura;
 
 public class Cena implements GLEventListener, KeyListener {
     private Menu menu;
+    private Textura textura = null;
+
+    public static final String IMG_TEXTURA = "imagens/metal.gif";
 
     private int opcao = 0;
     private boolean INICIO = true;
@@ -81,7 +85,6 @@ public class Cena implements GLEventListener, KeyListener {
     private float POSICAO_VIDA_BASE_Y = 0.3f;
     private float POSICAO_VIDA_BASE_Z = -0.89f;
 
-
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
         gl.glEnable(GL2.GL_DEPTH_TEST);
@@ -89,6 +92,8 @@ public class Cena implements GLEventListener, KeyListener {
         //Liga iluminacao
         gl.glEnable(GL2.GL_LIGHT0);
         gl.glEnable(GL2.GL_LIGHTING);
+
+        this.textura = new Textura(1);
 
         //Habilita as cores do objeto 3D
         gl.glEnable(GL2.GL_COLOR_MATERIAL);
@@ -318,6 +323,22 @@ public class Cena implements GLEventListener, KeyListener {
 
                 //BASTAO
                 gl.glPushMatrix();
+
+//                //transformações geométricas para as texturas
+//                gl.glMatrixMode(GL2.GL_TEXTURE);
+//                gl.glLoadIdentity();
+//                gl.glScalef(textura.getWidth(), textura.getHeight(), 1);
+//                gl.glMatrixMode(GL2.GL_MODELVIEW);
+//
+//                //é geração de textura automática
+//                textura.setAutomatica(true);
+//
+//                //habilita os filtros
+//                textura.setFiltro(GL2.GL_LINEAR);
+//                textura.setModo(GL2.GL_DECAL);
+//                textura.setWrap(GL2.GL_REPEAT);
+//                textura.gerarTextura(gl, IMG_TEXTURA, 0);
+
                 gl.glColor3f(0, 0, 1);
                 gl.glTranslatef(MOVE_BASTAO_X, 0, 0);
                 gl.glBegin(GL2.GL_QUADS);
@@ -499,7 +520,6 @@ public class Cena implements GLEventListener, KeyListener {
         }
 
         PAUSE = false;
-//        PONTUACAO_ATUAL = 0;
 
         MOVE_Y = 0;
         MOVE_X = 0;

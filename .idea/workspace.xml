@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="428c4170-3ee8-4eb3-9e7c-88a16ceb7b79" name="Default Changelist" comment="Fase 2">
+    <list default="true" id="428c4170-3ee8-4eb3-9e7c-88a16ceb7b79" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/img/metal.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/textura.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pong/textura/Textura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pong/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pong/cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/cena/Cena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pong/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pong/Renderer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/Renderer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pong/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/Renderer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pong/cena/Cena.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/cena/Cena.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pong/menu/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/menu/Menu.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,21 +45,33 @@
     </option>
   </component>
   <component name="ProjectId" id="1SqtcZpezqSqRM4FdZX11m2XIZ0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/cena3d/cena3d" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/img" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas.alves.pauletti\Documents\Github\pong\src\img" />
+      <recent name="C:\Users\lucas.alves.pauletti\Documents\Github\pong\src" />
+      <recent name="C:\Users\lucas.alves.pauletti\Documents\Github\pong\src\main\java\pong\textura" />
+      <recent name="C:\Users\lucas.alves.pauletti\Documents\Github\pong\src\main\java\pong\img" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cena" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas.alves.pauletti\Documents\Github\pong\src\img" />
+      <recent name="C:\Users\lucas.alves.pauletti\Documents\Github\pong\src\main\java\pong\textura" />
       <recent name="C:\Users\lucas.alves.pauletti\Desktop\pong\src\main\java" />
     </key>
   </component>
@@ -113,7 +123,7 @@
       <workItem from="1573166183530" duration="1956000" />
       <workItem from="1573333283975" duration="52000" />
       <workItem from="1573333458837" duration="15149000" />
-      <workItem from="1573405143999" duration="14665000" />
+      <workItem from="1573405143999" duration="17221000" />
     </task>
     <task id="LOCAL-00001" summary="Fase 2">
       <created>1573414492481</created>
@@ -122,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573414492481</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Instruções">
+      <created>1573422369271</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573422369271</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +159,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Fase 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fase 2" />
+    <MESSAGE value="Instruções" />
+    <option name="LAST_COMMIT_MESSAGE" value="Instruções" />
   </component>
 </project>
