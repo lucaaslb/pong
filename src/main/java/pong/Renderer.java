@@ -8,13 +8,6 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 import pong.cena.Cena;
 
-/**
- * LUCAS LACERDA BERNARDO - RA: 20787289
- * LUCAS ALVES - RA: 20761305
- *
- * @author @lucaaslb
- * @author Lucas Alves
- */
 public class Renderer {
     private static GLWindow window = null;
     public static int screenWidth = 600;

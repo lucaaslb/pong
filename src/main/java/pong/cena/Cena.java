@@ -6,6 +6,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.util.gl2.GLUT;
+import com.sun.deploy.nativesandbox.NativeSandboxBroker;
 import pong.menu.Menu;
 import pong.textura.Textura;
 
@@ -84,6 +85,9 @@ public class Cena implements GLEventListener, KeyListener {
     private float POSICAO_VIDA_BASE_X = (POSICAO_VIDA_ESQ_X + POSICAO_VIDA_DIR_X) / 2;
     private float POSICAO_VIDA_BASE_Y = 0.3f;
     private float POSICAO_VIDA_BASE_Z = -0.89f;
+
+    private float SPHERE = 0.022f;
+    private float CONE = 0.05f;
 
     public void init(GLAutoDrawable drawable) {
         GL2 gl = drawable.getGL().getGL2();
@@ -391,23 +395,32 @@ public class Cena implements GLEventListener, KeyListener {
     }
 
     public void desenhaVida(GL2 gl, GLUT glut, float incr) {
+        SPHERE += 0.0001f;
+        CONE += 0.0001f;
+
+        if (SPHERE > 0.030f) {
+            SPHERE = 0.022f;
+            CONE = 0.05f;
+        }
+
         gl.glPopMatrix();
 
         gl.glPushMatrix();
         gl.glColor3f(1, 0, 0);
         gl.glTranslatef(POSICAO_VIDA_ESQ_X + incr, POSICAO_VIDA_ESQ_Y, POSICAO_VIDA_Z);
-        glut.glutSolidSphere(0.022f, 10, 10);
+
+        glut.glutSolidSphere(SPHERE, 10, 10);
         gl.glPopMatrix();
 
         gl.glPushMatrix();
         gl.glTranslatef(POSICAO_VIDA_DIR_X + incr, POSICAO_VIDA_DIR_Y, POSICAO_VIDA_Z);
-        glut.glutSolidSphere(0.022f, 10, 10);
+        glut.glutSolidSphere(SPHERE, 10, 10);
         gl.glPopMatrix();
 
         gl.glPushMatrix();
         gl.glRotated(90, 1, 0, 0);
         gl.glTranslatef(POSICAO_VIDA_BASE_X + incr, POSICAO_VIDA_BASE_Y, POSICAO_VIDA_BASE_Z);
-        glut.glutSolidCone(.03f, 0.05f, 10, 10);
+        glut.glutSolidCone(CONE-0.02f, CONE, 10, 10);
         gl.glPopMatrix();
 
         gl.glPopMatrix();
@@ -525,8 +538,8 @@ public class Cena implements GLEventListener, KeyListener {
         MOVE_X = 0;
         VELOCIDADE = 0.01f;
 
-        LIMITE_SUPERIOR = 1;
-        LIMITE_DIREITA = 1;
+        LIMITE_SUPERIOR = 0.85f;
+        LIMITE_DIREITA = 0.87f;
         LIMITE_ESQUERDA = -1;
 
         BASTAO_X1 = -0.2f;
