@@ -32,9 +32,16 @@ public class Menu {
         this.voltar();
     }
 
-    public void jogo() {
-        this.desenhaTexto(0, 580, Color.PINK, "Fase 1", 15);
-        this.voltar();
+    public void jogo(String frase) {
+        this.desenhaTexto(15, 560, Color.BLUE, frase, 15);
+    }
+
+    public void fase2() {
+        this.desenhaTexto(230, 300, Color.PINK, "Fase 2", 40);
+    }
+
+    public void pontos(int pontos) {
+        this.desenhaTexto(280, 555, Color.BLUE, pontos+"", 20);
     }
 
     public void pause() {
@@ -43,6 +50,9 @@ public class Menu {
 
     public void gameOver() {
         this.desenhaTexto(175, 300, Color.PINK, "GAME OVER", 40);
-        this.voltar();
+    }
+
+    public void venceu() {
+        this.desenhaTexto(175, 300, Color.PINK, "Você venceu!", 40);
     }
 }
