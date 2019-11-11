@@ -27,7 +27,7 @@ public class Cena implements GLEventListener, KeyListener {
 
     private float MOVE_Y = 0;
     private float MOVE_X = 0;
-    private float VELOCIDADE = 0.01f;
+    private float VELOCIDADE = 0.012f;
 
     private float LIMITE_SUPERIOR = 0.85f;
     private float LIMITE_DIREITA = 0.87f;
@@ -160,7 +160,7 @@ public class Cena implements GLEventListener, KeyListener {
 
 
                 if (PONTUACAO_ATUAL >= PONTUACAO_FASE_2) {
-                    VELOCIDADE = 0.02f;
+                    VELOCIDADE = 0.015f;
 
                     BASTAO_2_CENTRO = (BASTAO_2_PONTA_ESQUERDA + BASTAO_2_PONTA_DIREITA) / 2;
                     float BOLA_X = (POSICAO_BOLA_X + rX);
@@ -349,6 +349,9 @@ public class Cena implements GLEventListener, KeyListener {
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y1);
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y2);
                 gl.glVertex2d(BASTAO_X1, BASTAO_Y2);
+
+                textura.desabilitarTextura(gl, 0);
+
                 gl.glEnd();
                 textura.desabilitarTextura(gl, 0);
                 gl.glPopMatrix();
@@ -544,8 +547,8 @@ public class Cena implements GLEventListener, KeyListener {
 
         BASTAO_X1 = -0.2f;
         BASTAO_X2 = 0.2f;
-        BASTAO_Y1 = -0.7f;
-        BASTAO_Y2 = -0.8f;
+        BASTAO_Y1 = -0.8f;
+        BASTAO_Y2 = -0.9f;
 
         CENTRO_TELA = 0;
         MEIO_CENTRO_TELA_ESQUERDO = -0.5f;
