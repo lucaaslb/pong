@@ -5,6 +5,7 @@ import com.jogamp.newt.event.KeyListener;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
 import com.sun.deploy.nativesandbox.NativeSandboxBroker;
 import pong.menu.Menu;
@@ -14,7 +15,7 @@ public class Cena implements GLEventListener, KeyListener {
     private Menu menu;
     private Textura textura = null;
 
-    public static final String IMG_TEXTURA = "imagens/metal.gif";
+    public static final String IMG_TEXTURA = System.getProperty("user.dir").concat("/src/imagens/metal.gif");
 
     private int opcao = 0;
     private boolean INICIO = true;
@@ -328,17 +329,11 @@ public class Cena implements GLEventListener, KeyListener {
                 //BASTAO
                 gl.glPushMatrix();
 
-//                //transformações geométricas para as texturas
-//                gl.glMatrixMode(GL2.GL_TEXTURE);
-//                gl.glLoadIdentity();
-//                gl.glScalef(textura.getWidth(), textura.getHeight(), 1);
-//                gl.glMatrixMode(GL2.GL_MODELVIEW);
-//
 //                //é geração de textura automática
-//                textura.setAutomatica(true);
+//                textura.setAutomatica(false);
 //
 //                //habilita os filtros
-//                textura.setFiltro(GL2.GL_LINEAR);
+//                textura.setFiltro(GL2.GL_TEXTURE_GEN_MODE);
 //                textura.setModo(GL2.GL_DECAL);
 //                textura.setWrap(GL2.GL_REPEAT);
 //                textura.gerarTextura(gl, IMG_TEXTURA, 0);
@@ -350,6 +345,7 @@ public class Cena implements GLEventListener, KeyListener {
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y1);
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y2);
                 gl.glVertex2d(BASTAO_X1, BASTAO_Y2);
+
                 gl.glEnd();
                 gl.glPopMatrix();
 
@@ -544,8 +540,8 @@ public class Cena implements GLEventListener, KeyListener {
 
         BASTAO_X1 = -0.2f;
         BASTAO_X2 = 0.2f;
-        BASTAO_Y1 = -0.7f;
-        BASTAO_Y2 = -0.8f;
+        BASTAO_Y1 = -0.8f;
+        BASTAO_Y2 = -0.9f;
 
         CENTRO_TELA = 0;
         MEIO_CENTRO_TELA_ESQUERDO = -0.5f;

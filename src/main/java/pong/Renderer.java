@@ -20,6 +20,7 @@ public class Renderer {
         GLCapabilities caps = new GLCapabilities(profile);
         window = GLWindow.create(caps);
         window.setFullscreen(true);
+
 //        window.setSize(screenWidth, screenHeight);
 //		 window.setResizable(false);
 
