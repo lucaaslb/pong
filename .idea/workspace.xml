@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="428c4170-3ee8-4eb3-9e7c-88a16ceb7b79" name="Default Changelist" comment="Efeito no coração">
+    <list default="true" id="428c4170-3ee8-4eb3-9e7c-88a16ceb7b79" name="Default Changelist" comment="Textura">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imagens/textura.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pong/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pong/cena/Cena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pong/cena/Cena.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pong/Renderer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/Renderer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pong/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/Renderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pong/cena/Cena.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pong/cena/Cena.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +121,8 @@
       <workItem from="1573166183530" duration="1956000" />
       <workItem from="1573333283975" duration="52000" />
       <workItem from="1573333458837" duration="15149000" />
-      <workItem from="1573405143999" duration="24738000" />
+      <workItem from="1573405143999" duration="25327000" />
+      <workItem from="1573509922005" duration="1162000" />
     </task>
     <task id="LOCAL-00001" summary="Fase 2">
       <created>1573414492481</created>
@@ -157,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573429581024</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Textura">
+      <created>1573442148197</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573442148197</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,8 +182,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Fase 2" />
     <MESSAGE value="Instruções" />
-    <MESSAGE value="Textura" />
     <MESSAGE value="Efeito no coração" />
-    <option name="LAST_COMMIT_MESSAGE" value="Efeito no coração" />
+    <MESSAGE value="Textura" />
+    <option name="LAST_COMMIT_MESSAGE" value="Textura" />
   </component>
 </project>

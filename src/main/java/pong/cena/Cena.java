@@ -5,9 +5,7 @@ import com.jogamp.newt.event.KeyListener;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
-import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
-import com.sun.deploy.nativesandbox.NativeSandboxBroker;
 import pong.menu.Menu;
 import pong.textura.Textura;
 
@@ -15,7 +13,7 @@ public class Cena implements GLEventListener, KeyListener {
     private Menu menu;
     private Textura textura = null;
 
-    public static final String IMG_TEXTURA = System.getProperty("user.dir").concat("/src/imagens/metal.gif");
+    public static final String IMG_TEXTURA = "src/imagens/metal.gif";
 
     private int opcao = 0;
     private boolean INICIO = true;
@@ -329,14 +327,14 @@ public class Cena implements GLEventListener, KeyListener {
                 //BASTAO
                 gl.glPushMatrix();
 
-//                //é geração de textura automática
-//                textura.setAutomatica(false);
-//
-//                //habilita os filtros
-//                textura.setFiltro(GL2.GL_TEXTURE_GEN_MODE);
-//                textura.setModo(GL2.GL_DECAL);
-//                textura.setWrap(GL2.GL_REPEAT);
-//                textura.gerarTextura(gl, IMG_TEXTURA, 0);
+                //é geração de textura automática
+                textura.setAutomatica(false);
+
+                //habilita os filtros
+                textura.setFiltro(GL2.GL_LINEAR);
+                textura.setModo(GL2.GL_DECAL);
+                textura.setWrap(GL2.GL_REPEAT);
+                textura.gerarTextura(gl, IMG_TEXTURA, 0);
 
                 gl.glColor3f(0, 0, 1);
                 gl.glTranslatef(MOVE_BASTAO_X, 0, 0);
@@ -345,6 +343,8 @@ public class Cena implements GLEventListener, KeyListener {
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y1);
                 gl.glVertex2d(BASTAO_X2, BASTAO_Y2);
                 gl.glVertex2d(BASTAO_X1, BASTAO_Y2);
+
+                textura.desabilitarTextura(gl, 0);
 
                 gl.glEnd();
                 gl.glPopMatrix();
